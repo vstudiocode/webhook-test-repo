@@ -11,15 +11,17 @@ app.post('/webhook', (req, res) => {
     const auth_header = req.headers.authorization;
     if (auth_header && auth_header.startsWith("Bearer ")) {
         const token = auth_header.substring(7);
-        if (token === "TESTING") {
+        if (token === VALID_SECRET) {
             console.log('Received valid webhook:');
             res.status(200).send('Webhook processed successfully!');
         } else {
-            // ???
+            console.log("Invalid webhook");
+            res.status(403).send('Token was incorrect.');
         }
     }
     else {
-        // ???
+        console.log("Recieved invalid webhook");
+        res.status(403).send("Token was missing.");
     }
 
 });

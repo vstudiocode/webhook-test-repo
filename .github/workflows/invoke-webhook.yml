@@ -20,3 +20,5 @@ jobs:
           # je zal nog twee waarden moeten instellen
           # zie https://github.com/marketplace/actions/workflow-webhook-action#arguments
           webhook_auth_type: "bearer"
+          webhook_auth: ${{ secrets.WEBHOOK_TOKEN }}
+          webhook_url: "http://webhoookcontainer/webhook"
